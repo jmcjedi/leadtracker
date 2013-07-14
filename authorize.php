@@ -13,7 +13,7 @@
     $con = pg_connect("host=$host dbname=$db user=$user password=$pass")
                        or die ("Could not connect to server\n"); 
 
-    $query = "SELECT id FROM business WHERE sid=" . $accountSid;
+    $query = "SELECT id FROM business WHERE sid='$accountSid'";
     $rs = pg_query($con, $query) or die ("Cannot execute check: $query\n");
     if($rs)
     {
