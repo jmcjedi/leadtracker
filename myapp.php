@@ -20,7 +20,7 @@
   
   $row = pg_fetch_row($rows); 
   $sid = $row[0]; 
-  echo 'sid = ' . $sid . '<br>';
+  //echo 'sid = ' . $sid . '<br>';
 
   $token = "27019bb0e54d4899aa4220b45d64e77b"; // Your account's AuthToken
      
@@ -29,8 +29,9 @@
  
   // request the call logs for the customer's account
   // and write them out
+  if(!$client) echo "No client call information\n";
   foreach($client->account->calls as $call) 
   {
-    echo "Call {$call->sid}: {$call->duration} seconds\n";
+    echo "Call" . $call->sid . ":" . $call->duration . "seconds\n";
   }
 ?>
