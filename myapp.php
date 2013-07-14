@@ -17,10 +17,9 @@
   $query = "SELECT sid FROM business WHERE id=".$id;
   $rows = pg_query($con, $query) or die("Cannot execute query: $query\n");
   
-  while ($row = pg_fetch_row($rows)) 
-  {
-    $sid = $row 
-  }
+  $row = pg_fetch_row($rows); 
+  $sid = $row[0]; 
+  
   $token = "27019bb0e54d4899aa4220b45d64e77b"; // Your account's AuthToken
      
   // create a new instance of the Twilio REST client
