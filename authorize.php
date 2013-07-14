@@ -27,5 +27,6 @@
     $location = "Location: http://sd-leadtracker.herokuapp.com/myapp.php?id=";
     $location = $location.$id; 
     echo "New Location = " . $location . "<br>";
-    header(location);
+    header($location);
+    exit();
 ?>
