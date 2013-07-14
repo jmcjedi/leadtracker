@@ -1,6 +1,6 @@
 <?php
   // Get the PHP helper library from twilio.com/docs/php/install
-  require_once('Services/Twilio.php'); // Loads the library
+  require_once('twilio-twilio-php-732e6f6/Services/Twilio.php'); // Loads the library
  
   $id = $_GET["id"];
   echo 'id = ' . $id . '<br>';
