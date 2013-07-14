@@ -17,7 +17,8 @@
     $rs = pg_query($con, $query) or die ("Cannot execute check: $query\n");
     if($rs)
     {
-      $id = $id.$rs[0];
+      $row = pg_fetch_row($rs);
+      $id = $id.$row[0];
     }
     else
     { 
