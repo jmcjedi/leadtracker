@@ -3,6 +3,7 @@
   require "Services/Twilio.php";
 
   $id = $_GET["id"];
+  echo 'id = ' . $id . '<br>';
   $sid = "";
 
   // store $accountSid value in database
@@ -19,7 +20,8 @@
   
   $row = pg_fetch_row($rows); 
   $sid = $row[0]; 
-  
+  echo 'sid = ' . $sid . '<br>';
+
   $token = "27019bb0e54d4899aa4220b45d64e77b"; // Your account's AuthToken
      
   // create a new instance of the Twilio REST client
