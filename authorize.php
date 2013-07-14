@@ -12,17 +12,26 @@
 
     $con = pg_connect("host=$host dbname=$db user=$user password=$pass")
                        or die ("Could not connect to server\n"); 
-    
-    $query = "SELECT * FROM business";   
-    $rs1 = pg_query($con, $query) or die("Cannot execute query: $query\n");
-    $totalBusinesses = count($rs1);
 
-    $query = "INSERT INTO business VALUES (".$totalBusinesses.", '$accountSid')";
-    $rs2 = pg_query($con, $query) or die("Cannot execute insert: $query\n"); 
+    $query = "SELECT id FROM business WHERE sid=" . $accountSid;
+    $rs = pg_query($con, $query) or die ("Cannot execute check: $query\n");
+    if($rs)
+    {
+      $id = $id.$rs[0];
+    }
+    else
+    { 
+      $query = "SELECT count(*) FROM business";   
+      $rs1 = pg_query($con, $query) or die("Cannot execute query: $query\n");  
+      $totalBusinesses = $rs1[0];
+
+      $query = "INSERT INTO business VALUES (".$totalBusinesses.", '$accountSid')";
+      $rs2 = pg_query($con, $query) or die("Cannot execute insert: $query\n"); 
     
-    $id = $id.$totalBusinesses; 
+      $id = $id.$totalBusinesses; 
+    }  
     pg_close($con);  
-
+    
     // redirect back to my app when done
     $location = "Location: http://sd-leadtracker.herokuapp.com/myapp.php?id=";
     $location = $location.$id; 
