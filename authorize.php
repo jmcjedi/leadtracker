@@ -1,4 +1,5 @@
 <?php
+
     $accountSid = $_GET['AccountSid'];
     $id = "";
 
@@ -14,17 +15,17 @@
     
     $query = "SELECT * FROM business";   
     $rs1 = pg_query($con, $query) or die("Cannot execute query: $query\n");
-    $totalBusinesses = count($rs);
+    $totalBusinesses = count($rs1);
 
     $query = "INSERT INTO business VALUES (".$totalBusinesses.", '$accountSid')";
     $rs2 = pg_query($con, $query) or die("Cannot execute insert: $query\n"); 
     
-    $id = $id.$totalBusiness; 
+    $id = $id.$totalBusinesses; 
     pg_close($con);  
 
     // redirect back to my app when done
     $location = "Location: http://sd-leadtracker.herokuapp.com/myapp.php?id=";
     $location = $location.$id; 
-    echo "New Location = " . $location . "<br>":
+    echo "New Location = " . $location . "<br>";
     header(location);
 ?>
