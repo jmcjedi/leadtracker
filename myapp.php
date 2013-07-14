@@ -1,7 +1,7 @@
 <?php
-  
-  require "Services/Twilio.php";
-
+  // Get the PHP helper library from twilio.com/docs/php/install
+  require_once('Services/Twilio.php'); // Loads the library
+ 
   $id = $_GET["id"];
   echo 'id = ' . $id . '<br>';
   $sid = "";
@@ -33,5 +33,11 @@
   foreach($client->account->calls as $call) 
   {
     echo "Call" . $call->sid . ":" . $call->duration . "seconds\n";
+  }
+
+  // Loop over the list of records and echo a property for each one
+  foreach ($client->account->usage_records->last_month as $record) 
+  {
+    echo $record->sid;
   }
 ?>
