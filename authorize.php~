@@ -1,7 +1,0 @@
-<?php
-    $accountSid = $_GET['AccountSid'];
-    // store $accountSid value in database 
-    // associated with a user in your application
-    // redirect back to my app when done
-    header("Location: http://sd-leadtracker.herokuapp.com/myapp.php");
-?>
